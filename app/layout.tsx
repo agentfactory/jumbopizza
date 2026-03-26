@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-[#1a0505] text-white font-sans min-h-screen flex flex-col">
+      <body className="bg-white text-[#1A1A1A] font-sans min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

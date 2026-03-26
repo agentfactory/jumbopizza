@@ -10,7 +10,7 @@ const deliveryAreas = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#3B0A0A] border-t border-[#5c1010]">
+    <footer className="bg-[#1E1208] border-t border-[#2D1A0A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
@@ -106,7 +106,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="my-8 bg-[#5c1010]" />
+        <Separator className="my-8 bg-[#2D1A0A]" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-500">
           <p>&copy; {new Date().getFullYear()} Jumbo Pizza Rockland. All rights reserved.</p>

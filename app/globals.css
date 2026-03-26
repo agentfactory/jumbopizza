@@ -36,17 +36,17 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-maroon: #3B0A0A;
-  --color-maroon-dark: #2a0707;
-  --color-maroon-light: #5c1010;
-  --color-maroon-lighter: #7a1515;
+  --color-maroon: #E04F2A;
+  --color-maroon-dark: #c03d1a;
+  --color-maroon-light: #f07050;
+  --color-maroon-lighter: #f09070;
   --color-gold: #FFD700;
   --color-gold-light: #FFE44D;
   --color-gold-dark: #CC9900;
   --color-gold-muted: #AA8800;
-  --color-pizza-bg: #1a0505;
-  --color-pizza-surface: #240808;
-  --color-pizza-card: #2d0a0a;
+  --color-pizza-bg: #FFF8F0;
+  --color-pizza-surface: #FFFFFF;
+  --color-pizza-card: #FFFFFF;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -54,40 +54,40 @@
 }
 
 :root {
-  --background: #1a0505;
-  --foreground: #ffffff;
-  --card: #2d0a0a;
-  --card-foreground: #ffffff;
-  --popover: #240808;
-  --popover-foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #1A1A1A;
+  --card: #ffffff;
+  --card-foreground: #1A1A1A;
+  --popover: #ffffff;
+  --popover-foreground: #1A1A1A;
   --primary: #FFD700;
-  --primary-foreground: #1a0505;
-  --secondary: #3B0A0A;
+  --primary-foreground: #1A1A1A;
+  --secondary: #E04F2A;
   --secondary-foreground: #ffffff;
-  --muted: #240808;
-  --muted-foreground: #aaaaaa;
-  --accent: #5c1010;
-  --accent-foreground: #ffffff;
+  --muted: #F5F5F5;
+  --muted-foreground: #888888;
+  --accent: #FFF4E6;
+  --accent-foreground: #1A1A1A;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #5c1010;
-  --input: #3B0A0A;
+  --border: #E5E5E5;
+  --input: #ffffff;
   --ring: #FFD700;
   --radius: 0.625rem;
-  --sidebar: #240808;
-  --sidebar-foreground: #ffffff;
+  --sidebar: #F5F5F5;
+  --sidebar-foreground: #1A1A1A;
   --sidebar-primary: #FFD700;
-  --sidebar-primary-foreground: #1a0505;
-  --sidebar-accent: #3B0A0A;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #5c1010;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #FFF4E6;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E5E5E5;
   --sidebar-ring: #FFD700;
 }
 
 * { box-sizing: border-box; }
 
 body {
-  background: #1a0505;
-  color: white;
+  background: #ffffff;
+  color: #1A1A1A;
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 

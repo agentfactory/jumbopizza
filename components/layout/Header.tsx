@@ -20,7 +20,7 @@ export function Header() {
   const count = itemCount();
 
   return (
-    <header className="sticky top-0 z-50 bg-[#3B0A0A] border-b border-[#5c1010] shadow-lg">
+    <header className="sticky top-0 z-50 bg-white border-b border-[#E5E5E5] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -36,7 +36,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-[#FFD700] transition-colors font-medium"
+                className="text-[#4A4A4A] hover:text-[#E04F2A] transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -47,7 +47,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <a
               href="tel:6134461291"
-              className="hidden sm:flex items-center gap-1.5 text-[#FFD700] hover:text-[#FFE44D] transition-colors font-semibold"
+              className="hidden sm:flex items-center gap-1.5 text-[#E04F2A] hover:text-[#c03d1a] transition-colors font-semibold"
             >
               <Phone className="w-4 h-4" />
               <span className="text-sm">613-446-1291</span>
@@ -55,12 +55,12 @@ export function Header() {
 
             <button
               onClick={openCart}
-              className="relative p-2 text-white hover:text-[#FFD700] transition-colors"
+              className="relative p-2 text-[#4A4A4A] hover:text-[#E04F2A] transition-colors"
               aria-label="Open cart"
             >
               <ShoppingCart className="w-6 h-6" />
               {count > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-[#FFD700] text-[#1a0505] text-xs font-bold rounded-full">
+                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-[#FFD700] text-[#1A1A1A] text-xs font-bold rounded-full">
                   {count}
                 </Badge>
               )}
@@ -68,7 +68,7 @@ export function Header() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 text-white hover:text-[#FFD700] transition-colors"
+              className="md:hidden p-2 text-[#4A4A4A] hover:text-[#E04F2A] transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -79,13 +79,13 @@ export function Header() {
 
         {/* Mobile Nav */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-[#5c1010] py-4">
+          <div className="md:hidden border-t border-[#E5E5E5] py-4">
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-2 py-2 text-white hover:text-[#FFD700] hover:bg-[#5c1010] rounded transition-colors font-medium"
+                  className="px-2 py-2 text-[#4A4A4A] hover:text-[#E04F2A] hover:bg-[#FFF4E6] rounded transition-colors font-medium"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -93,7 +93,7 @@ export function Header() {
               ))}
               <a
                 href="tel:6134461291"
-                className="flex items-center gap-1.5 px-2 py-2 text-[#FFD700] font-semibold"
+                className="flex items-center gap-1.5 px-2 py-2 text-[#E04F2A] font-semibold"
               >
                 <Phone className="w-4 h-4" />
                 613-446-1291
