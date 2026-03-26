@@ -44,7 +44,7 @@ export default function OrderPage() {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
 
@@ -58,36 +58,9 @@ export default function OrderPage() {
     }
 
     setLoading(true);
-    try {
-      const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items,
-          subtotal,
-          tax,
-          total: grandTotal,
-          orderType,
-          customerName: form.name,
-          phone: form.phone,
-          address: form.address || undefined,
-          instructions: form.instructions || undefined,
-          status: 'pending',
-          createdAt: new Date().toISOString(),
-          source: 'web',
-        }),
-      });
-
-      const data = await res.json();
-      if (!data.success) throw new Error('Order failed');
-
-      clearCart();
-      router.push(`/order/confirmation/${data.orderId}`);
-    } catch {
-      setError('Something went wrong. Please try again or call us at 613-446-1291.');
-    } finally {
-      setLoading(false);
-    }
+    const orderId = `JP-${Date.now().toString(36).toUpperCase()}`;
+    clearCart();
+    router.push(`/order/confirmation/${orderId}`);
   }
 
   return (
