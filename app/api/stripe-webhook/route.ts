@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, STRIPE_WEBHOOK_SECRET } from "@/lib/stripe";
+
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import Stripe from "stripe";
 
