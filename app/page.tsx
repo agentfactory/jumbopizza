@@ -1,234 +1,255 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Clock, MapPin, Star, Truck, Users, Pizza } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Flame, Truck, Leaf, Timer, ArrowRight } from 'lucide-react';
 
-const highlights = [
+const sg = 'font-[family-name:var(--font-space-grotesk)]';
+
+const pizzas = [
   {
-    icon: Pizza,
-    title: '18" XL Pizza',
-    description: 'Massive XL pizzas perfect for the whole family',
+    name: 'MEAT LOVERS',
+    desc: 'Pepperoni, bacon, ground beef, italian sausage',
+    price: 'FROM $17.00',
+    img: 'https://images.unsplash.com/photo-1602658015824-b49d35094837?w=600&q=80',
+    bg: '#2D0A0A',
   },
   {
-    icon: Star,
-    title: 'Fresh Daily',
-    description: 'Made fresh every day with quality ingredients',
+    name: 'HAWAIIAN',
+    desc: 'Ham, pineapples',
+    price: 'FROM $16.25',
+    img: 'https://images.unsplash.com/photo-1692812472060-c15ca30af036?w=600&q=80',
+    bg: '#240808',
   },
   {
-    icon: Truck,
-    title: 'Delivery Available',
-    description: 'We deliver to Rockland and surrounding areas',
+    name: 'LA MARGHARITA',
+    desc: 'Tomato sauce, fresh garlic, basil, oregano, black olives',
+    price: 'FROM $17.00',
+    img: 'https://images.unsplash.com/photo-1682989087146-70a0834c42c1?w=600&q=80',
+    bg: '#2D0A0A',
   },
   {
-    icon: Users,
-    title: 'Family Owned',
-    description: 'Proudly family-owned and operated in Rockland',
+    name: 'POGO BACON POUTINE',
+    desc: 'Stuffed crust, Pogo, bacon, St-Albert curds, poutine sauce, fresh fries',
+    price: 'FROM $19.95',
+    img: 'https://images.unsplash.com/photo-1624900183034-338974e68033?w=600&q=80',
+    bg: '#3B0A0A',
+    badge: 'GOURMET',
   },
 ];
 
-const featuredDeals = [
-  {
-    name: 'Pizza & Pickles',
-    description: 'Pizza + our famous deep fried pickles',
-    price: '$33.95',
-  },
-  {
-    name: 'Pizza & Wings',
-    description: 'Pizza + 10 wings of your choice',
-    price: '$33.95',
-  },
-  {
-    name: 'Pizza & Curly Poutine',
-    description: 'Pizza + a delicious curly poutine',
-    price: '$33.95',
-  },
-];
-
-const deliveryAreas = [
-  'Clarence', 'Clarence Creek', 'Cumberland', 'Plantagenet',
-  'Rockland', 'Sarsfield', 'Treadwell', 'Wendover',
-  'Pendleton', 'Surrounding camping grounds & ferries',
+const deals = [
+  'Medium Pizza + Deep Fried Pickles + 2 Drinks',
+  'X-Large Pizza + 2 Drinks + 2 Dipping Sauces',
+  'Medium Pizza + 10 Chicken Wings + 2 Drinks',
 ];
 
 export default function HomePage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1600&q=80"
-          alt="Delicious pizza"
-          fill
-          className="object-cover"
-          priority
-          unoptimized
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a0505]/80 via-[#1a0505]/70 to-[#1a0505]" />
-
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-display text-5xl sm:text-7xl font-bold text-[#FFD700] mb-4 tracking-wide">
-            JUMBO PIZZA
-          </h1>
-          <p className="text-2xl sm:text-3xl font-display font-semibold text-white mb-2">
-            Biggest Pizza in Rockland!
-          </p>
-          <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-            Jumbo Sized Pizza with Jumbo Size Value. Fresh, delicious, and delivered to your door.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#FFD700] hover:bg-[#FFE44D] text-[#1a0505] font-bold text-lg px-8 py-6"
-            >
-              <Link href="/menu">Order Now</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-[#FFD700] text-[#FFD700] hover:bg-[#3B0A0A] font-bold text-lg px-8 py-6 bg-transparent"
-            >
-              <a href="tel:6134461291">
-                <Phone className="w-5 h-5 mr-2" />
-                613-446-1291
-              </a>
-            </Button>
+    <div className={sg}>
+      {/* Feature Strip */}
+      <section className="bg-[#FFD700] h-20 flex items-center justify-between px-20 max-[900px]:px-6 max-[900px]:flex-wrap max-[900px]:h-auto max-[900px]:py-4 max-[900px]:gap-4">
+        {[
+          { Icon: Flame, label: 'MADE FRESH DAILY' },
+          { Icon: Truck, label: 'DELIVERY AVAILABLE' },
+          { Icon: Leaf, label: 'VEGAN & GLUTEN FREE OPTIONS' },
+          { Icon: Timer, label: 'OPEN 7 DAYS A WEEK' },
+        ].map(({ Icon, label }, i) => (
+          <div key={i} className="flex items-center gap-3">
+            <Icon className="w-5 h-5 text-[#1A0505]" strokeWidth={2} />
+            <span className="text-[#1A0505] text-[11px] font-bold tracking-[2px]">{label}</span>
           </div>
-        </div>
+        ))}
       </section>
 
-      {/* Highlights */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((h) => (
-            <div
-              key={h.title}
-              className="bg-[#2d0a0a] border border-[#5c1010] rounded-xl p-6 text-center hover:border-[#FFD700] transition-colors"
+      {/* Hero */}
+      <section className="bg-[#1A0505] flex items-center justify-between gap-15 px-20 py-0 max-[900px]:flex-col max-[900px]:px-6 max-[900px]:py-10">
+        {/* Left */}
+        <div className="flex flex-col gap-7 max-w-[580px] py-8 shrink-0">
+          {/* Badge */}
+          <div className="flex items-center gap-2 bg-[#FFD70022] rounded-sm px-3.5 py-1.5 w-fit">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700] inline-block" />
+            <span className="text-[#FFD700] text-[10px] font-semibold tracking-[2px]">ROCKLAND&apos;S BIGGEST PIZZA</span>
+          </div>
+
+          {/* Heading */}
+          <div>
+            <h1 className="text-white text-[80px] font-bold leading-[0.92] tracking-[-2px] max-[1100px]:text-[60px] max-[700px]:text-[48px]">
+              JUMBO SIZED PIZZA.
+            </h1>
+            <h1 className="text-[#FFD700] text-[80px] font-bold leading-[0.92] tracking-[-2px] max-[1100px]:text-[60px] max-[700px]:text-[48px]">
+              JUMBO SIZE VALUE.
+            </h1>
+          </div>
+
+          <p className="text-white/50 text-base leading-[1.7] max-w-[500px]">
+            Fresh-made daily. Delivered to Rockland, Clarence, Cumberland &amp; beyond. Dine in or take out — 11AM to 10PM.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-4 flex-wrap">
+            <Link
+              href="/order"
+              className="bg-[#FFD700] text-[#1A0505] text-sm font-bold tracking-[1.5px] px-9 py-[18px] hover:bg-[#FFE44D] transition-colors"
             >
-              <div className="flex justify-center mb-3">
-                <div className="p-3 bg-[#3B0A0A] rounded-full">
-                  <h.icon className="w-8 h-8 text-[#FFD700]" />
+              ORDER ONLINE
+            </Link>
+            <Link
+              href="/menu"
+              className="border border-[#FFD70066] bg-[#1A0505] text-[#FFD700] text-sm font-bold tracking-[1.5px] px-9 py-[17px] hover:bg-[#2D0A0A] transition-colors"
+            >
+              VIEW MENU
+            </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="flex items-center gap-8 pt-2">
+            {[
+              { num: '18"', label: 'BIGGEST SIZE' },
+              { num: '10+', label: 'DELIVERY AREAS' },
+              { num: '17+', label: 'PIZZA STYLES' },
+            ].map(({ num, label }, i) => (
+              <div key={i} className="flex items-center gap-8">
+                {i > 0 && <div className="w-px h-10 bg-white/15" />}
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[#FFD700] text-[28px] font-bold">{num}</span>
+                  <span className="text-white/40 text-[9px] font-semibold tracking-[2px]">{label}</span>
                 </div>
               </div>
-              <h3 className="font-display text-lg font-semibold text-[#FFD700] mb-1">{h.title}</h3>
-              <p className="text-sm text-gray-400">{h.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Hours */}
-      <section className="py-12 px-4 bg-[#240808]">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-[#FFD700] mb-8">Hours of Operation</h2>
-          <div className="grid sm:grid-cols-2 gap-4 max-w-md mx-auto">
-            <div className="bg-[#2d0a0a] border border-[#5c1010] rounded-xl p-5">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Clock className="w-4 h-4 text-[#FFD700]" />
-                <span className="font-semibold text-[#FFD700]">Sun – Thursday</span>
-              </div>
-              <p className="text-white text-lg font-bold">11 AM – 9 PM</p>
-            </div>
-            <div className="bg-[#2d0a0a] border border-[#5c1010] rounded-xl p-5">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Clock className="w-4 h-4 text-[#FFD700]" />
-                <span className="font-semibold text-[#FFD700]">Fri – Saturday</span>
-              </div>
-              <p className="text-white text-lg font-bold">11 AM – 10 PM</p>
-            </div>
+            ))}
           </div>
         </div>
+
+        {/* Right — hero image */}
+        <div className="relative w-[620px] h-[580px] shrink-0 max-[1100px]:w-[480px] max-[900px]:w-full max-[900px]:h-[320px]">
+          <Image
+            src="https://images.unsplash.com/photo-1600628421066-f6bda6a7b976?w=1080&q=80"
+            alt="Jumbo Pizza"
+            fill
+            className="object-cover"
+            unoptimized
+            priority
+          />
+          {/* left fade */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#1A0505] to-transparent" />
+          {/* overlay vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A050566]" />
+        </div>
       </section>
 
-      {/* Featured Deals */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="font-display text-3xl font-bold text-[#FFD700] mb-2">
-            Monday – Wednesday Deals
-          </h2>
-          <p className="text-gray-400">Save big on these incredible combo deals</p>
+      {/* Featured Pizzas */}
+      <section className="bg-[#1A0505] px-20 py-20 max-[900px]:px-6">
+        {/* Header */}
+        <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col gap-2.5">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full" />
+              <span className="text-[#FFD700] text-[10px] font-semibold tracking-[2px]">OUR MENU</span>
+            </div>
+            <h2 className="text-white text-[42px] font-bold leading-[1.05] max-w-[520px] max-[700px]:text-[32px]">
+              The Classics That Made Us Famous
+            </h2>
+          </div>
+          <Link href="/menu" className="flex items-center gap-1.5 text-[#FFD700] text-[11px] font-semibold tracking-[2px] hover:opacity-80 transition-opacity shrink-0 mb-2">
+            VIEW FULL MENU <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-          {featuredDeals.map((deal) => (
-            <div
-              key={deal.name}
-              className="bg-[#2d0a0a] border-2 border-[#FFD700]/30 rounded-xl p-6 text-center hover:border-[#FFD700] transition-colors"
-            >
-              <div className="inline-block bg-[#FFD700] text-[#1a0505] text-xs font-bold px-2 py-1 rounded-full mb-3">
-                MON–WED ONLY
+
+        {/* Grid */}
+        <div className="grid grid-cols-4 gap-0.5 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1">
+          {pizzas.map((pizza) => (
+            <div key={pizza.name} className="flex flex-col relative" style={{ background: pizza.bg }}>
+              {pizza.badge && (
+                <div className="absolute top-3 left-3 z-10 bg-[#FFD700] text-[#1A0505] text-[10px] font-bold tracking-[1.5px] px-2.5 py-1">
+                  {pizza.badge}
+                </div>
+              )}
+              <div className="relative h-[220px] w-full">
+                <Image src={pizza.img} alt={pizza.name} fill className="object-cover" unoptimized />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-1">{deal.name}</h3>
-              <p className="text-sm text-gray-400 mb-3">{deal.description}</p>
-              <p className="text-2xl font-bold text-[#FFD700]">{deal.price}</p>
+              <div className="flex flex-col gap-2 p-5 flex-1">
+                <span className="text-white text-base font-bold tracking-[1px]">{pizza.name}</span>
+                <p className="text-white/40 text-[12px] leading-[1.5] flex-1">{pizza.desc}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#FFD700] text-[12px] font-bold tracking-[1px]">{pizza.price}</span>
+                  <Link
+                    href="/order"
+                    className="bg-[#FFD700] text-[#1A0505] text-[10px] font-bold tracking-[1.5px] px-4 py-2 hover:bg-[#FFE44D] transition-colors"
+                  >
+                    ORDER
+                  </Link>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-        <div className="text-center mt-8">
-          <Button asChild className="bg-[#FFD700] hover:bg-[#FFE44D] text-[#1a0505] font-bold">
-            <Link href="/deals">View All Deals</Link>
-          </Button>
-        </div>
       </section>
 
-      {/* Crust Options Notice */}
-      <section className="py-10 px-4 bg-[#240808]">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-[#FFD700] font-semibold text-lg mb-2">Crust Options Available</p>
-          <p className="text-gray-300">
-            Natural &bull; Cauliflower &bull; Keto &bull; Gluten Free &nbsp;|&nbsp; Vegan Cheese Available
+      {/* Deals Section */}
+      <section className="flex h-[420px] max-[900px]:flex-col max-[900px]:h-auto">
+        {/* Text side */}
+        <div className="bg-[#3B0A0A] w-[560px] shrink-0 flex flex-col justify-center gap-6 px-[60px] py-[60px] max-[900px]:w-full">
+          <div className="flex items-center gap-2">
+            <div className="w-[3px] h-3.5 bg-[#FFD700]" />
+            <span className="text-[#FFD700] text-[10px] font-semibold tracking-[2px]">MON — WED SPECIALS</span>
+          </div>
+          <h2 className="text-[#FFD700] text-[56px] font-bold leading-[0.95] tracking-[-1px]">$33.95 DEALS</h2>
+          <p className="text-white/50 text-sm leading-[1.6] max-w-[380px]">
+            Every Monday, Tuesday and Wednesday. Mix and match your favourites.
           </p>
-        </div>
-      </section>
-
-      {/* Delivery Areas */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="font-display text-3xl font-bold text-[#FFD700] mb-2">Delivery Areas</h2>
-          <div className="flex items-center justify-center gap-2 text-gray-400">
-            <MapPin className="w-4 h-4" />
-            <span>We deliver to all these locations and more</span>
+          <div className="flex flex-col gap-2">
+            {deals.map((deal) => (
+              <div key={deal} className="flex items-center gap-2.5">
+                <div className="w-1 h-1 bg-[#FFD700] shrink-0" />
+                <span className="text-white text-[13px]">{deal}</span>
+              </div>
+            ))}
           </div>
+          <Link
+            href="/deals"
+            className="bg-[#FFD700] text-[#1A0505] text-[12px] font-bold tracking-[2px] px-7 py-3.5 w-fit hover:bg-[#FFE44D] transition-colors"
+          >
+            ORDER A DEAL
+          </Link>
         </div>
-        <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
-          {deliveryAreas.map((area) => (
-            <span
-              key={area}
-              className="bg-[#2d0a0a] border border-[#5c1010] rounded-full px-4 py-2 text-sm text-gray-300"
-            >
-              {area}
-            </span>
-          ))}
+
+        {/* Image side */}
+        <div className="relative flex-1 min-h-[280px]">
+          <Image
+            src="https://images.unsplash.com/photo-1560717869-37296557a131?w=1080&q=80"
+            alt="Pizza deals"
+            fill
+            className="object-cover"
+            unoptimized
+          />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 bg-[#3B0A0A] text-center">
-        <h2 className="font-display text-4xl font-bold text-[#FFD700] mb-4">Ready to Order?</h2>
-        <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-          Order online or give us a call. We&apos;ll have your food ready fresh and hot!
+      <section className="bg-[#3B0A0A] flex flex-col items-center justify-center gap-6 py-[60px] px-20 text-center max-[700px]:px-6">
+        <div className="flex items-center gap-2">
+          <div className="w-[3px] h-3.5 bg-[#FFD700]" />
+          <span className="text-[#FFD700] text-[10px] font-semibold tracking-[2px]">CALL US ANYTIME</span>
+        </div>
+        <a href="tel:6134461291" className="text-white text-[48px] font-bold tracking-[-1px] hover:text-[#FFD700] transition-colors max-[700px]:text-[32px]">
+          HUNGRY? CALL 613-446-1291
+        </a>
+        <p className="text-white/40 text-[13px]">
+          Sun–Thu: 11AM–9PM &nbsp;·&nbsp; Fri–Sat: 11AM–10PM &nbsp;·&nbsp; Delivery to Clarence, Cumberland, Rockland &amp; more
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#FFD700] hover:bg-[#FFE44D] text-[#1a0505] font-bold text-lg px-8"
+        <div className="flex items-center gap-3 flex-wrap justify-center">
+          <Link
+            href="/order"
+            className="bg-[#FFD700] text-[#1A0505] text-[12px] font-bold tracking-[2px] px-8 py-3.5 hover:bg-[#FFE44D] transition-colors"
           >
-            <Link href="/menu">Order Online</Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-white text-white hover:bg-[#5c1010] font-bold text-lg px-8 bg-transparent"
+            ORDER ONLINE
+          </Link>
+          <Link
+            href="/menu"
+            className="border border-[#FFD70066] bg-[#3B0A0A] text-[#FFD700] text-[12px] font-bold tracking-[2px] px-8 py-3.5 hover:bg-[#4a0d0d] transition-colors"
           >
-            <a href="tel:6134461291">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Us
-            </a>
-          </Button>
+            VIEW FULL MENU
+          </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

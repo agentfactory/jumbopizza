@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-display: var(--font-oswald);
+  --font-grotesk: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-oswald);
   --color-sidebar-ring: var(--sidebar-ring);
