@@ -1,0 +1,36 @@
+import { NextRequest, NextResponse } from "next/server";
+import { stripe, STRIPE_WEBHOOK_SECRET } from "@/lib/stripe";
+import { prisma } from "@/lib/db";
+import Stripe from "stripe";
+
+export async function POST(req: NextRequest) {
+  const body = await req.text();
+  const sig = req.headers.get("stripe-signature")!;
+
+  let event: Stripe.Event;
+  try {
+    event = stripe.webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET);
+  } catch {
+    return NextResponse.json({ error: "Webhook signature invalid" }, { status: 400 });
+  }
+
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object as Stripe.Checkout.Session;
+    const orderId = session.metadata?.orderId;
+
+    if (orderId) {
+      await prisma.order.update({
+        where: { id: orderId },
+        data: {
+          status: "PAID",
+          stripePaymentStatus: session.payment_status,
+        },
+      });
+    }
+  }
+
+  return NextResponse.json({ received: true });
+}
+
+// Stripe webhooks need the raw body — disable body parsing
+export const config = { api: { bodyParser: false } };
